@@ -1,0 +1,173 @@
+> 辽宁省审查结果与本轮验证见 [docs/competition](docs/competition/liaoning-ict-requirements.md)。初赛不要求PPT；真实AI调用、视频及盖章材料仍待完成。
+
+> 省赛修改版：请先阅读 [省赛运行说明](省赛运行说明.md)，包含已验证的本地启动、数据库初始化和 AgentArts 接入步骤。
+
+<p align="center">
+  <img src="banner.svg" alt="课灵 KeLing 3.0" width="100%">
+</p>
+
+<div align="center">
+
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF-7F52FF)
+![React](https://img.shields.io/badge/React-61DAFB-61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933-339933)
+![Android](https://img.shields.io/badge/Android-3DDC84-3DDC84)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+**🌱 多端知识管理应用 · 培育你的知识星球**
+
+</div>
+
+
+---
+
+
+## ✨ 核心功能
+
+| 特性 | 说明 |
+|------|------|
+| 📱 **Android 移动端** | Kotlin + Jetpack Compose + Material Design 3 + MVVM |
+| 🌐 **Web 网页端** | React 19 + TypeScript + Vite + Zustand + Framer Motion |
+| ⚙️ **后端服务** | Node.js + Express + Prisma ORM + SQLite + JWT |
+| 🔄 **数据同步** | 多端共享同一后端 API，通过API按需拉取与写入，非实时推送 |
+| ✅ **核心功能** | 用户认证、课程管理、任务系统、笔记同步、每日签到 |
+
+## 🏗 多端架构
+
+<p align="center"><img src="diagrams/KeLing3.0.svg" alt="KeLing 3.0 Multi-end Architecture" width="85%"></p>
+
+
+---
+
+
+> 🌱 多端知识管理应用 - 培育你的知识星球
+
+> **项目状态：Preview。** 当前适合开发体验和封闭试用，不建议承载唯一副本的重要资料。
+> 首个受信任的 Android 签名发布前必须完成签名密钥轮换，详见 [SECURITY.md](SECURITY.md)。
+
+## 📱 项目结构
+
+```
+KeLing/
+├── apps/
+│   ├── android/          # Android 移动端 (Kotlin + Jetpack Compose)
+│   ├── web/              # Web 网页端 (React + TypeScript + Vite)
+│   └── server/           # 后端服务器 (Node.js + Express + Prisma)
+├── packages/
+│   └── shared/           # 共享类型定义
+├── start.bat             # Windows 启动脚本
+└── package.json          # Monorepo 配置
+```
+
+## 🚀 快速开始
+
+### Windows 用户
+
+双击 `start.bat` 文件，选择要启动的服务。
+
+### 手动启动
+
+```bash
+# 安装依赖
+npm run install:all
+
+# 同时启动后端和前端
+npm run dev
+
+# 或单独启动
+npm run dev:server  # 后端: http://localhost:3001
+npm run dev:web     # 前端: http://localhost:5173
+```
+
+### Android 开发
+
+1. 使用 Android Studio 打开 `apps/android` 目录
+2. 等待 Gradle 同步完成
+3. 点击 Run 按钮启动
+
+## 🛠 技术栈
+
+### 移动端 (Android)
+- Kotlin + Jetpack Compose
+- Material Design 3
+- DataStore (本地存储)
+- Ktor (网络请求)
+- MVVM 架构
+
+### 网页端 (Web)
+- React 19 + TypeScript
+- Vite (构建工具)
+- Zustand (状态管理)
+- Framer Motion (动画)
+- React Router (路由)
+
+### 后端 (Server)
+- Node.js + Express
+- Prisma ORM
+- SQLite 数据库
+- JWT 认证
+- RESTful API
+
+## 📡 API 端点
+
+| 端点 | 说明 |
+|------|------|
+| `POST /api/auth/register` | 用户注册 |
+| `POST /api/auth/login` | 用户登录 |
+| `GET /api/auth/me` | 获取当前用户 |
+| `GET /api/courses` | 获取课程列表 |
+| `POST /api/courses` | 创建课程 |
+| `GET /api/tasks` | 获取任务列表 |
+| `POST /api/tasks` | 创建任务 |
+| `POST /api/checkin` | 每日签到 |
+
+## 🔄 数据同步
+
+移动端和网页端共享同一套后端 API，通过API按需拉取与写入，非实时推送：
+
+- ✅ 用户认证 (JWT Token)
+- ✅ 课程管理
+- ✅ 任务系统
+- ✅ 笔记同步
+- ✅ 签到记录
+
+## 📝 开发说明
+
+### 环境要求
+- Node.js >= 18
+- Android Studio (用于移动端开发)
+- JDK 17+
+
+### 配置文件
+
+- `apps/server/.env` - 后端环境变量
+- `apps/android/app/src/main/java/com/keling/app/network/ApiClient.kt` - 移动端 API 配置
+
+### API 地址配置
+
+| 环境 | Web | Android 模拟器 | Android 真机 |
+|------|-----|---------------|-------------|
+| 开发 | localhost:3001 | 10.0.2.2:3001 | 局域网IP:3001 |
+
+## 📄 License
+
+MIT License
+
+## 🤝 社区与长期维护
+
+- 贡献和本地验证：[CONTRIBUTING.md](CONTRIBUTING.md)
+- 产品路线与 1.0 标准：[ROADMAP.md](ROADMAP.md)
+- 支持边界：[SUPPORT.md](SUPPORT.md)
+- 安全报告与签名轮换要求：[SECURITY.md](SECURITY.md)
+
+可复现缺陷请提交 Issue，产品设计问题请使用 GitHub Discussions。APK、数据库、`.env`
+和签名库不再作为源码提交；可分发二进制只应由通过门禁的发布工作流生成。
+
+---
+
+<div align="center">
+
+**Made with ❤️ by Hyhyhyyy**
+
+</div>
+
