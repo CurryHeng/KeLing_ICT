@@ -22,6 +22,6 @@
     "install:all": "npm install && cd apps/server && npm install && cd ../web && npm install"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^10.0.6"
   }
 }
